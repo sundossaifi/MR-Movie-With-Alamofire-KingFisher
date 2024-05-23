@@ -12,10 +12,14 @@ class MoviesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(MoviesTableViewCell.nib(), forCellReuseIdentifier: MoviesTableViewCell.identifier)
+        if(NetworkMonitor.shared.isConnected) {
+            print("connected")
+        }
+        else {
+            print("not connected")
+        }
     }
     
-  
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,7 +37,7 @@ class MoviesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 110
     }
 
   /*

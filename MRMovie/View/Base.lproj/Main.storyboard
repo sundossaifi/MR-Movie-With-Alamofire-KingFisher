@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="794" y="181"/>
         </scene>
-        <!--Root View Controller-->
+        <!--MR Movie-->
         <scene sceneID="GcX-uh-W47">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="nbm-Od-iWh" customClass="MoviesTableViewController" customModule="MRMovie" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,17 +31,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="pqw-lj-mhm">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="prominent" id="pqw-lj-mhm">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
                             <connections>
                                 <outlet property="delegate" destination="nbm-Od-iWh" id="tKb-fe-pWq"/>
                             </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoviesTableViewCell" id="aTs-Hz-uK5" customClass="MoviesTableViewCell" customModule="MRMovie" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="393" height="47.666667938232422"/>
+                                <rect key="frame" x="0.0" y="106" width="393" height="47.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTs-Hz-uK5" id="fdP-sJ-adM">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
@@ -54,7 +59,7 @@
                             <outlet property="delegate" destination="nbm-Od-iWh" id="dTY-zv-uv9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" style="editor" id="dIS-5d-feu"/>
+                    <navigationItem key="navigationItem" title="MR Movie" largeTitleDisplayMode="always" style="editor" id="dIS-5d-feu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CqQ-CQ-Fim" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,6 +72,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HAb-3c-QbC">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="compactAppearance"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kD0-bM-hsU">
                         <autoresizingMask key="autoresizingMask"/>
