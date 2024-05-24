@@ -8,16 +8,15 @@
 import UIKit
 
 class MoviesTableViewController: UITableViewController {
+  
+    
+    let viewModel = MoviesViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
+        print(viewModel.shows.count)
         tableView.register(MoviesTableViewCell.nib(), forCellReuseIdentifier: MoviesTableViewCell.identifier)
-        if(NetworkMonitor.shared.isConnected) {
-            print("connected")
-        }
-        else {
-            print("not connected")
-        }
     }
     
     // MARK: - Table view data source
@@ -27,27 +26,38 @@ class MoviesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return viewModel.getMoviesCount()
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviesTableViewCell.identifier, for: indexPath) as? MoviesTableViewCell else {return UITableViewCell()}
+        let show = viewModel.shows[indexPath.row]
+        cell.configureCell(show: show)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 100
     }
-
-  /*
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let count = viewModel.getMoviesCount()
+        if indexPath.item == count-1 {
+            viewModel.fetchMoviesIfNeeded()
+        }
     }
-    */
+}
 
+extension MoviesTableViewController: MoviesViewModelDelegate {
+    func onFetchCompleted(withNewData: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func onFetchFailed(with reason: String) {
+        
+    }
 }
 

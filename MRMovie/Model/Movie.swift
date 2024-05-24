@@ -35,7 +35,7 @@ struct Show: Codable {
     let image: Image?
     let summary: String
     let updated: Int
-    let links: Links
+    let links: Links? // Make this optional
 }
 
 struct Schedule: Codable {

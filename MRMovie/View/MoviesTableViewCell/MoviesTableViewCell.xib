@@ -17,15 +17,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="352" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scooby-doo-the-gang-i10228" translatesAutoresizingMaskIntoConstraints="NO" id="ntC-Tq-jOD">
-                        <rect key="frame" x="10" y="5" width="110" height="100"/>
-                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntC-Tq-jOD">
+                        <rect key="frame" x="10" y="5" width="90" height="100"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="110" id="nAX-GF-b7j"/>
+                            <constraint firstAttribute="width" constant="90" id="nAX-GF-b7j"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-aI-Ldy">
-                        <rect key="frame" x="140" y="7" width="207" height="96"/>
+                        <rect key="frame" x="120" y="7" width="227" height="96"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="uqR-f8-gMU">
                                 <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="60"/>
@@ -103,12 +103,20 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSo-9E-2wY">
+                        <rect key="frame" x="19.666666666666671" y="45" width="71" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="ntC-Tq-jOD" secondAttribute="bottom" constant="5" id="Gom-fe-3l1"/>
                     <constraint firstAttribute="trailing" secondItem="8FU-aI-Ldy" secondAttribute="trailing" constant="5" id="HKV-Rd-UD0"/>
                     <constraint firstItem="ntC-Tq-jOD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="IXR-j9-iB3"/>
+                    <constraint firstItem="uSo-9E-2wY" firstAttribute="centerX" secondItem="ntC-Tq-jOD" secondAttribute="centerX" id="ZBB-AG-yw6"/>
                     <constraint firstItem="8FU-aI-Ldy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Zza-Hf-p41"/>
+                    <constraint firstItem="uSo-9E-2wY" firstAttribute="centerY" secondItem="ntC-Tq-jOD" secondAttribute="centerY" id="dfT-sP-Bv0"/>
                     <constraint firstAttribute="bottom" secondItem="8FU-aI-Ldy" secondAttribute="bottom" constant="7" id="fJM-Jw-MRx"/>
                     <constraint firstItem="ntC-Tq-jOD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="g8e-x9-rcP"/>
                     <constraint firstItem="8FU-aI-Ldy" firstAttribute="leading" secondItem="ntC-Tq-jOD" secondAttribute="trailing" constant="20" id="iaX-Xz-BFH"/>
@@ -119,6 +127,7 @@
                 <outlet property="movieNameLabel" destination="bnI-4z-4fJ" id="eWP-Bs-5H0"/>
                 <outlet property="moviePosterImageView" destination="ntC-Tq-jOD" id="ufV-mh-mff"/>
                 <outlet property="movieTypeLabel" destination="kzi-Cm-VzP" id="a6H-XW-w8d"/>
+                <outlet property="noPhotoLabel" destination="uSo-9E-2wY" id="3Xv-yo-PF4"/>
                 <outletCollection property="starsRatingImageViews" destination="JfG-By-fYt" collectionClass="NSMutableArray" id="53L-pT-gjB"/>
                 <outletCollection property="starsRatingImageViews" destination="sNL-Yq-gXb" collectionClass="NSMutableArray" id="kPt-qu-v7y"/>
                 <outletCollection property="starsRatingImageViews" destination="crV-Me-cQG" collectionClass="NSMutableArray" id="UqR-Vq-sFY"/>
@@ -129,13 +138,12 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="scooby-doo-the-gang-i10228" width="474" height="709"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemGray2Color">
             <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
