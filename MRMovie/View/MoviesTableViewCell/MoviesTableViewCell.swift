@@ -26,8 +26,30 @@ class MoviesTableViewCell: UITableViewCell {
         configureMoviePosterImageView()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        starsRatingImageViews.forEach { $0.image = UIImage(systemName: "star") }
+        moviePosterImageView.image = nil
+        noPhotoLabel.isHidden = false
+    }
+    
     private func configureMoviePosterImageView() {
         self.moviePosterImageView.layer.cornerRadius = 8
+    }
+    
+    private func updateStarRating(rating: Double) {
+        let fullStars = Int(rating)
+        let halfStarThreshold = (rating - Double(fullStars)) >= 0.5
+        
+        for (index, imageView) in starsRatingImageViews.enumerated() {
+            if index < fullStars {
+                imageView.image = UIImage(systemName: "star.fill")
+            } else if index == fullStars && halfStarThreshold {
+                imageView.image = UIImage(systemName: "star.leadinghalf.filled")
+            } else {
+                imageView.image = UIImage(systemName: "star")
+            }
+        }
     }
     
     func configureCell(show: Show) {
@@ -40,5 +62,9 @@ class MoviesTableViewCell: UITableViewCell {
             moviePosterImageView.image = nil 
             noPhotoLabel.isHidden = false
         }
+        guard let average = show.rating.average else {
+            return
+        }
+        updateStarRating(rating: average / 2)
     }
 }

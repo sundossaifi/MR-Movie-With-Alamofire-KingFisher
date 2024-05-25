@@ -21,82 +21,113 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWy-7L-U1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="794" y="181"/>
-        </scene>
-        <!--MR Movie-->
-        <scene sceneID="GcX-uh-W47">
-            <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="nbm-Od-iWh" customClass="MoviesTableViewController" customModule="MRMovie" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cOh-Nf-bAx">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="prominent" id="pqw-lj-mhm">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
-                            <connections>
-                                <outlet property="delegate" destination="nbm-Od-iWh" id="tKb-fe-pWq"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoviesTableViewCell" id="aTs-Hz-uK5" customClass="MoviesTableViewCell" customModule="MRMovie" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="106" width="393" height="47.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTs-Hz-uK5" id="fdP-sJ-adM">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="nbm-Od-iWh" id="h1X-sx-LX8"/>
-                            <outlet property="delegate" destination="nbm-Od-iWh" id="dTY-zv-uv9"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="MR Movie" largeTitleDisplayMode="always" style="editor" id="dIS-5d-feu"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CqQ-CQ-Fim" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1699" y="-426"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="JnQ-R3-0s3">
-            <objects>
-                <navigationController id="Hhg-Xb-TkW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HAb-3c-QbC">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="compactAppearance"/>
-                    </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kD0-bM-hsU">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="nbm-Od-iWh" kind="relationship" relationship="rootViewController" id="olC-Ok-zoc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zSA-Z5-jBv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="794" y="-426"/>
+            <point key="canvasLocation" x="900" y="222"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="czc-y8-Vvb">
             <objects>
                 <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="beside" behavior="tile" primaryBackgroundStyle="sidebar" id="cAd-8t-SRM" customClass="SplitViewController" customModule="MRMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="Hhg-Xb-TkW" kind="relationship" relationship="masterViewController" id="0FD-l3-zBb"/>
                         <segue destination="QRr-hY-Xfa" kind="relationship" relationship="detailViewController" id="frh-VM-w5D"/>
+                        <segue destination="jtG-qo-ynw" kind="relationship" relationship="masterViewController" id="OuD-wq-CUU"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Th-NW-jBr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-112" y="-122"/>
+        </scene>
+        <!--MR Movie-->
+        <scene sceneID="NWK-cm-A7K">
+            <objects>
+                <viewController id="chK-9L-wWP" customClass="MoviesVC" customModule="MRMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Xu-5u-6i5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-Qg-HPJ">
+                                <rect key="frame" x="0.0" y="179" width="393" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="nTJ-DO-jrW">
+                                    <rect key="frame" x="0.0" y="125.66666793823242" width="393" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Joi-j5-wXq">
+                                            <rect key="frame" x="178" y="3.6666666666666679" width="37" height="37"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="37" id="Kg1-NM-Ekr"/>
+                                                <constraint firstAttribute="width" constant="37" id="Qbv-SX-NlY"/>
+                                            </constraints>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="Joi-j5-wXq" firstAttribute="centerY" secondItem="nTJ-DO-jrW" secondAttribute="centerY" id="AAR-MQ-kC3"/>
+                                        <constraint firstItem="Joi-j5-wXq" firstAttribute="centerX" secondItem="nTJ-DO-jrW" secondAttribute="centerX" id="FvW-Sv-rpD"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Ilc-Mr-bvz">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ilc-Mr-bvz" id="zj6-hz-UiS">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jV3-qI-5vs">
+                                <rect key="frame" x="10" y="113" width="373" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="chK-9L-wWP" id="TyF-qM-BLS"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bzB-V7-wiU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="leading" secondItem="bzB-V7-wiU" secondAttribute="leading" id="8ga-kj-y1n"/>
+                            <constraint firstAttribute="bottom" secondItem="SMo-Qg-HPJ" secondAttribute="bottom" id="B6f-Cq-hej"/>
+                            <constraint firstAttribute="trailing" secondItem="jV3-qI-5vs" secondAttribute="trailing" constant="10" id="ICv-uv-mdV"/>
+                            <constraint firstItem="jV3-qI-5vs" firstAttribute="leading" secondItem="bzB-V7-wiU" secondAttribute="leading" constant="10" id="IZR-xL-uaS"/>
+                            <constraint firstItem="jV3-qI-5vs" firstAttribute="top" secondItem="bzB-V7-wiU" secondAttribute="top" constant="10" id="Qal-wC-KDl"/>
+                            <constraint firstItem="bzB-V7-wiU" firstAttribute="trailing" secondItem="SMo-Qg-HPJ" secondAttribute="trailing" id="Yq1-XT-CTH"/>
+                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="top" secondItem="jV3-qI-5vs" secondAttribute="bottom" constant="10" id="peC-GE-kWu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="MR Movie" id="gR6-W1-w36"/>
+                    <connections>
+                        <outlet property="loadingMoviesIndicator" destination="Joi-j5-wXq" id="7o5-id-as0"/>
+                        <outlet property="moviesTableView" destination="SMo-Qg-HPJ" id="i6K-23-Z8H"/>
+                        <outlet property="searchMovieBar" destination="jV3-qI-5vs" id="BAO-DZ-ldk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3O-ym-epw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1693.8931297709923" y="-475.35211267605638"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MIN-YJ-0XC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="jtG-qo-ynw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="jWT-VA-Khb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gW9-2P-bX2">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FUM-hg-YTd">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="chK-9L-wWP" kind="relationship" relationship="rootViewController" id="hPl-0Z-5L4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mpl-oM-j4j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="-475"/>
         </scene>
     </scenes>
     <resources>

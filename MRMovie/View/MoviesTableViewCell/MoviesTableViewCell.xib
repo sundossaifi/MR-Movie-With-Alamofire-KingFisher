@@ -27,23 +27,17 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-aI-Ldy">
                         <rect key="frame" x="120" y="7" width="227" height="96"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="uqR-f8-gMU">
-                                <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uqR-f8-gMU">
+                                <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="54.666666666666664"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnI-4z-4fJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="9lh-KX-3DL"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="26.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzi-Cm-VzP">
-                                        <rect key="frame" x="0.0" y="30" width="133.66666666666666" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Ah0-gK-bhx"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="28.333333333333336" width="133.66666666666666" height="26.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
                                         <nil key="highlightedColor"/>
@@ -123,22 +117,26 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="tintColor" systemColor="systemBackgroundColor"/>
             <connections>
                 <outlet property="movieNameLabel" destination="bnI-4z-4fJ" id="eWP-Bs-5H0"/>
                 <outlet property="moviePosterImageView" destination="ntC-Tq-jOD" id="ufV-mh-mff"/>
                 <outlet property="movieTypeLabel" destination="kzi-Cm-VzP" id="a6H-XW-w8d"/>
                 <outlet property="noPhotoLabel" destination="uSo-9E-2wY" id="3Xv-yo-PF4"/>
-                <outletCollection property="starsRatingImageViews" destination="JfG-By-fYt" collectionClass="NSMutableArray" id="53L-pT-gjB"/>
-                <outletCollection property="starsRatingImageViews" destination="sNL-Yq-gXb" collectionClass="NSMutableArray" id="kPt-qu-v7y"/>
-                <outletCollection property="starsRatingImageViews" destination="crV-Me-cQG" collectionClass="NSMutableArray" id="UqR-Vq-sFY"/>
-                <outletCollection property="starsRatingImageViews" destination="vUf-YE-Fhz" collectionClass="NSMutableArray" id="llY-Cx-vlU"/>
-                <outletCollection property="starsRatingImageViews" destination="SNm-xb-aa6" collectionClass="NSMutableArray" id="YJ9-HK-FuP"/>
+                <outletCollection property="starsRatingImageViews" destination="SNm-xb-aa6" collectionClass="NSMutableArray" id="YUC-1L-LLZ"/>
+                <outletCollection property="starsRatingImageViews" destination="crV-Me-cQG" collectionClass="NSMutableArray" id="H1B-Q6-Nvf"/>
+                <outletCollection property="starsRatingImageViews" destination="sNL-Yq-gXb" collectionClass="NSMutableArray" id="RTg-ub-l03"/>
+                <outletCollection property="starsRatingImageViews" destination="vUf-YE-Fhz" collectionClass="NSMutableArray" id="tPG-fT-gmI"/>
+                <outletCollection property="starsRatingImageViews" destination="JfG-By-fYt" collectionClass="NSMutableArray" id="94z-K6-3sO"/>
             </connections>
             <point key="canvasLocation" x="111.45038167938931" y="4.9295774647887329"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
