@@ -45,10 +45,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-Qg-HPJ">
-                                <rect key="frame" x="0.0" y="179" width="393" height="673"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="jV3-qI-5vs">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="chK-9L-wWP" id="TyF-qM-BLS"/>
+                                    </connections>
+                                </searchBar>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="nTJ-DO-jrW">
-                                    <rect key="frame" x="0.0" y="125.66666793823242" width="393" height="44"/>
+                                    <rect key="frame" x="0.0" y="727" width="393" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Joi-j5-wXq">
@@ -67,7 +75,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Ilc-Mr-bvz">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="106" width="393" height="47.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ilc-Mr-bvz" id="zj6-hz-UiS">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
@@ -76,24 +84,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jV3-qI-5vs">
-                                <rect key="frame" x="10" y="113" width="373" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="chK-9L-wWP" id="TyF-qM-BLS"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bzB-V7-wiU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SMo-Qg-HPJ" firstAttribute="leading" secondItem="bzB-V7-wiU" secondAttribute="leading" id="8ga-kj-y1n"/>
                             <constraint firstAttribute="bottom" secondItem="SMo-Qg-HPJ" secondAttribute="bottom" id="B6f-Cq-hej"/>
-                            <constraint firstAttribute="trailing" secondItem="jV3-qI-5vs" secondAttribute="trailing" constant="10" id="ICv-uv-mdV"/>
-                            <constraint firstItem="jV3-qI-5vs" firstAttribute="leading" secondItem="bzB-V7-wiU" secondAttribute="leading" constant="10" id="IZR-xL-uaS"/>
-                            <constraint firstItem="jV3-qI-5vs" firstAttribute="top" secondItem="bzB-V7-wiU" secondAttribute="top" constant="10" id="Qal-wC-KDl"/>
                             <constraint firstItem="bzB-V7-wiU" firstAttribute="trailing" secondItem="SMo-Qg-HPJ" secondAttribute="trailing" id="Yq1-XT-CTH"/>
-                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="top" secondItem="jV3-qI-5vs" secondAttribute="bottom" constant="10" id="peC-GE-kWu"/>
+                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="top" secondItem="bzB-V7-wiU" secondAttribute="top" id="hDn-NR-D4U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MR Movie" id="gR6-W1-w36"/>
