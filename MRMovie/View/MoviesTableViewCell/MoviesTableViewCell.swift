@@ -55,8 +55,8 @@ class MoviesTableViewCell: UITableViewCell {
     func configureCell(show: Show) {
         movieNameLabel.text = show.name
         movieTypeLabel.text = show.type
-        if let urlString = show.image?.original, let url = URL(string: urlString) {
-            moviePosterImageView.kf.setImage(with: url)
+        if let originalURL = show.image?.originalURL {
+            moviePosterImageView.kf.setImage(with: originalURL)
             noPhotoLabel.isHidden = true
         } else {
             moviePosterImageView.image = nil 

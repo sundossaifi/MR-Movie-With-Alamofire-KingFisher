@@ -31,60 +31,68 @@ struct Show: Codable {
     let summary: String?
     let updated: Int?
     let links: Links?
-
+    
     struct Schedule: Codable {
         let time: String?
         let days: [String]?
     }
-
+    
     struct Rating: Codable {
         let average: Double?
     }
-
+    
     struct Country: Codable {
         let name: String
         let code: String
         let timezone: String
     }
-
+    
     struct Network: Codable {
         let id: Int
         let name: String
         let country: Country
         let officialSite: String?
     }
-
+    
     struct WebChannel: Codable {
         let id: Int
         let name: String
         let country: Country?
         let officialSite: String?
     }
-
+    
     struct DVD: Codable {
         // Define properties if necessary
     }
-
+    
     struct Externals: Codable {
         let tvrage: Int?
         let thetvdb: Int?
         let imdb: String?
     }
-
+    
     struct Image: Codable {
         let medium: String
         let original: String
+        
+        var originalURL: URL? {
+            return URL(string: original)
+        }
+        
+        var mediumURL: URL? {
+            return URL(string: medium)
+        }
     }
-
+    
     struct Links: Codable {
         let selfLink: Link
         let previousepisode: Link?
-
+        
         enum CodingKeys: String, CodingKey {
             case selfLink = "self"
             case previousepisode
         }
-
+        
         struct Link: Codable {
             let href: String
         }

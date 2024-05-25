@@ -8,13 +8,14 @@
 import UIKit
 
 protocol MoviesViewModelDelegate: AnyObject {
-    func onFetchCompleted(withNewData: Bool)
+    func onFetchCompleted()
     func onFetchFailed(with reason: String)
 }
 
 class MoviesViewModel {
     weak var delegate: MoviesViewModelDelegate?
     var shows: [Show] = []
+    var filteredShows: [Show] = []
     var currentPage: Int = 0
     var isFetchInProgress = false
 
@@ -38,15 +39,16 @@ class MoviesViewModel {
                 let newShows = shows
 
                 if newShows.isEmpty {
-                    self.delegate?.onFetchCompleted(withNewData: false)
+                    self.delegate?.onFetchCompleted()
                 } else {
                     if nextPage == 1 {
                         self.shows = newShows
                     } else {
                         self.shows.append(contentsOf: newShows)
                     }
+                    self.filteredShows = self.shows
                     self.currentPage = nextPage
-                    self.delegate?.onFetchCompleted(withNewData: true)
+                    self.delegate?.onFetchCompleted()
                 }
             }
         } onFailure: { [weak self] error in
@@ -56,5 +58,14 @@ class MoviesViewModel {
                 self.delegate?.onFetchFailed(with: error.localizedDescription)
             }
         }
+    }
+    
+    func filterShows(for searchText: String) {
+        if searchText.isEmpty {
+            filteredShows = shows
+        } else {
+            filteredShows = shows.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        }
+        delegate?.onFetchCompleted()
     }
 }

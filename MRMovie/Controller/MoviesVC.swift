@@ -17,10 +17,15 @@ class MoviesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
+        configureView()
+    }
+    
+    private func configureView() {
+        self.viewModel.delegate = self
         self.moviesTableView.dataSource = self
         self.moviesTableView.delegate = self
         self.moviesTableView.register(MoviesTableViewCell.nib(), forCellReuseIdentifier: MoviesTableViewCell.identifier)
+        self.searchMovieBar.delegate = self
     }
 }
 
@@ -30,13 +35,13 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getMoviesCount()
+        return viewModel.filteredShows.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviesTableViewCell.identifier, for: indexPath) as? MoviesTableViewCell else {return UITableViewCell()}
-        let show = viewModel.shows[indexPath.row]
+        let show = viewModel.filteredShows[indexPath.row]
         cell.configureCell(show: show)
         return cell
     }
@@ -54,7 +59,7 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MoviesVC: MoviesViewModelDelegate {
-    func onFetchCompleted(withNewData: Bool) {
+    func onFetchCompleted() {
         DispatchQueue.main.async {
             self.loadingMoviesIndicator.isHidden = false
             self.loadingMoviesIndicator.startAnimating()
@@ -73,3 +78,16 @@ extension MoviesVC: MoviesViewModelDelegate {
         }
     }
 }
+
+extension MoviesVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filterShows(for: searchText)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        viewModel.filterShows(for: "")
+    }
+}
+
