@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum Constants {
-    static let baseURL = "https://api.tvmaze.com/search/shows"
+    static let baseURL = "https://api.tvmaze.com/shows"
 }
 
 enum API {
@@ -18,7 +18,7 @@ enum API {
     var urlString: String {
         switch self {
         case .fetchMovies(let page):
-            return "\(Constants.baseURL)?q=movies&page=\(page)"
+            return "\(Constants.baseURL)?page=\(page)"
         }
     }
     
@@ -26,7 +26,6 @@ enum API {
         return URL(string: urlString)
     }
 }
-
 class MoviesAPICaller {
     static let shared = MoviesAPICaller()
     
@@ -44,7 +43,7 @@ class MoviesAPICaller {
         return Session(configuration: configuration,cachedResponseHandler: responseCacher)
     }()
     
-    public func fetchMovies(_ page: Int, onSuccess: @escaping ([Root]) -> Void, onFailure: @escaping (Error) -> Void) {
+    public func fetchMovies(_ page: Int, onSuccess: @escaping ([Show]) -> Void, onFailure: @escaping (Error) -> Void) {
         guard let url = API.fetchMovies(page: page).url else {
             onFailure(NSError(domain: "APICaller", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
             return
@@ -59,7 +58,7 @@ class MoviesAPICaller {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let results = try decoder.decode([Root].self, from: data)
+                    let results = try decoder.decode([Show].self, from: data)
                     onSuccess(results)
                 } catch {
                     onFailure(error)

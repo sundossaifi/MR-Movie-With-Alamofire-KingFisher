@@ -62,7 +62,7 @@ class MoviesTableViewCell: UITableViewCell {
             moviePosterImageView.image = nil 
             noPhotoLabel.isHidden = false
         }
-        guard let average = show.rating.average else {
+        guard let average = show.rating?.average else {
             return
         }
         updateStarRating(rating: average / 2)

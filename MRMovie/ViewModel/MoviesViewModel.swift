@@ -17,26 +17,26 @@ class MoviesViewModel {
     var shows: [Show] = []
     var currentPage: Int = 0
     var isFetchInProgress = false
-    
+
     init() {
         fetchMoviesIfNeeded()
     }
-    
+
     func getMoviesCount() -> Int {
         return shows.count
     }
-    
+
     func fetchMoviesIfNeeded() {
         guard !isFetchInProgress else { return }
         isFetchInProgress = true
         let nextPage = currentPage + 1
-        
-        MoviesAPICaller.shared.fetchMovies(nextPage) { [weak self] rootArray in
+
+        MoviesAPICaller.shared.fetchMovies(nextPage) { [weak self] shows in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.isFetchInProgress = false
-                let newShows = rootArray.map { $0.show }
-                
+                let newShows = shows
+
                 if newShows.isEmpty {
                     self.delegate?.onFetchCompleted(withNewData: false)
                 } else {
