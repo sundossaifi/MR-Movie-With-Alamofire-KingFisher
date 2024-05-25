@@ -35,14 +35,14 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.filteredShows.count
+        return viewModel.getFilteredMoviesCount()
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviesTableViewCell.identifier, for: indexPath) as? MoviesTableViewCell else {return UITableViewCell()}
-        let show = viewModel.filteredShows[indexPath.row]
-        cell.configureCell(show: show)
+        let movie = viewModel.filteredMovies[indexPath.row]
+        cell.configureCell(movie: movie)
         return cell
     }
     
@@ -81,13 +81,13 @@ extension MoviesVC: MoviesViewModelDelegate {
 
 extension MoviesVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.filterShows(for: searchText)
+        viewModel.filterMovies(for: searchText)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        viewModel.filterShows(for: "")
+        viewModel.filterMovies(for: "")
     }
 }
 

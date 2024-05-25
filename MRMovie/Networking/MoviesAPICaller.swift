@@ -43,7 +43,7 @@ class MoviesAPICaller {
         return Session(configuration: configuration,cachedResponseHandler: responseCacher)
     }()
     
-    public func fetchMovies(_ page: Int, onSuccess: @escaping ([Show]) -> Void, onFailure: @escaping (Error) -> Void) {
+    public func fetchMovies(_ page: Int, onSuccess: @escaping ([Movie]) -> Void, onFailure: @escaping (Error) -> Void) {
         guard let url = API.fetchMovies(page: page).url else {
             onFailure(NSError(domain: "APICaller", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
             return
@@ -58,7 +58,7 @@ class MoviesAPICaller {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let results = try decoder.decode([Show].self, from: data)
+                    let results = try decoder.decode([Movie].self, from: data)
                     onSuccess(results)
                 } catch {
                     onFailure(error)

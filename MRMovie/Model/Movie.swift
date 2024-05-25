@@ -1,5 +1,5 @@
 //
-//  show.swift
+//  Movie.swift
 //  MRMovie
 //
 //  Created by User on 5/24/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Show: Codable {
+struct Movie: Codable {
     let id: Int
     let url: String
     let name: String

@@ -14,8 +14,8 @@ protocol MoviesViewModelDelegate: AnyObject {
 
 class MoviesViewModel {
     weak var delegate: MoviesViewModelDelegate?
-    var shows: [Show] = []
-    var filteredShows: [Show] = []
+    var Movies: [Movie] = []
+    var filteredMovies: [Movie] = []
     var currentPage: Int = 0
     var isFetchInProgress = false
 
@@ -24,7 +24,11 @@ class MoviesViewModel {
     }
 
     func getMoviesCount() -> Int {
-        return shows.count
+        return Movies.count
+    }
+    
+    func getFilteredMoviesCount() -> Int {
+        return filteredMovies.count
     }
 
     func fetchMoviesIfNeeded() {
@@ -32,21 +36,21 @@ class MoviesViewModel {
         isFetchInProgress = true
         let nextPage = currentPage + 1
 
-        MoviesAPICaller.shared.fetchMovies(nextPage) { [weak self] shows in
+        MoviesAPICaller.shared.fetchMovies(nextPage) { [weak self] Movies in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.isFetchInProgress = false
-                let newShows = shows
+                let newMovies = Movies
 
-                if newShows.isEmpty {
+                if newMovies.isEmpty {
                     self.delegate?.onFetchCompleted()
                 } else {
                     if nextPage == 1 {
-                        self.shows = newShows
+                        self.Movies = newMovies
                     } else {
-                        self.shows.append(contentsOf: newShows)
+                        self.Movies.append(contentsOf: newMovies)
                     }
-                    self.filteredShows = self.shows
+                    self.filteredMovies = self.Movies
                     self.currentPage = nextPage
                     self.delegate?.onFetchCompleted()
                 }
@@ -60,11 +64,11 @@ class MoviesViewModel {
         }
     }
     
-    func filterShows(for searchText: String) {
+    func filterMovies(for searchText: String) {
         if searchText.isEmpty {
-            filteredShows = shows
+            filteredMovies = Movies
         } else {
-            filteredShows = shows.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            filteredMovies = Movies.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         }
         delegate?.onFetchCompleted()
     }

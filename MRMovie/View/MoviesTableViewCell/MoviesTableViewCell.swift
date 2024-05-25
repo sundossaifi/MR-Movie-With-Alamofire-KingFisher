@@ -52,17 +52,17 @@ class MoviesTableViewCell: UITableViewCell {
         }
     }
     
-    func configureCell(show: Show) {
-        movieNameLabel.text = show.name
-        movieTypeLabel.text = show.type
-        if let originalURL = show.image?.originalURL {
+    func configureCell(movie: Movie) {
+        movieNameLabel.text = movie.name
+        movieTypeLabel.text = movie.type
+        if let originalURL = movie.image?.originalURL {
             moviePosterImageView.kf.setImage(with: originalURL)
             noPhotoLabel.isHidden = true
         } else {
             moviePosterImageView.image = nil 
             noPhotoLabel.isHidden = false
         }
-        guard let average = show.rating?.average else {
+        guard let average = movie.rating?.average else {
             return
         }
         updateStarRating(rating: average / 2)
