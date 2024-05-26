@@ -14,7 +14,7 @@ protocol MoviesViewModelDelegate: AnyObject {
 
 class MoviesViewModel {
     weak var delegate: MoviesViewModelDelegate?
-    var Movies: [Movie] = []
+    var movies: [Movie] = []
     var filteredMovies: [Movie] = []
     var currentPage: Int = 0
     var isFetchInProgress = false
@@ -24,7 +24,7 @@ class MoviesViewModel {
     }
 
     func getMoviesCount() -> Int {
-        return Movies.count
+        return movies.count
     }
     
     func getFilteredMoviesCount() -> Int {
@@ -46,11 +46,11 @@ class MoviesViewModel {
                     self.delegate?.onFetchCompleted()
                 } else {
                     if nextPage == 1 {
-                        self.Movies = newMovies
+                        self.movies = newMovies
                     } else {
-                        self.Movies.append(contentsOf: newMovies)
+                        self.movies.append(contentsOf: newMovies)
                     }
-                    self.filteredMovies = self.Movies
+                    self.filteredMovies = self.movies
                     self.currentPage = nextPage
                     self.delegate?.onFetchCompleted()
                 }
@@ -66,9 +66,9 @@ class MoviesViewModel {
     
     func filterMovies(for searchText: String) {
         if searchText.isEmpty {
-            filteredMovies = Movies
+            filteredMovies = movies
         } else {
-            filteredMovies = Movies.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            filteredMovies = movies.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         }
         delegate?.onFetchCompleted()
     }

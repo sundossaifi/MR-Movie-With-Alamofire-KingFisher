@@ -15,10 +15,12 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     }
     
     private func configure() {
-        self.preferredPrimaryColumnWidthFraction = 0.5
+        self.preferredPrimaryColumnWidthFraction = 0.4
         self.minimumPrimaryColumnWidth = 250
-        self.maximumPrimaryColumnWidth = 450
+        self.maximumPrimaryColumnWidth = 500
         self.preferredDisplayMode = .oneBesideSecondary
+        self.presentsWithGesture = true
+        self.preferredSplitBehavior = .tile
         self.delegate = self
     }
     

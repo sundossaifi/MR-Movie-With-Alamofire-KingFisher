@@ -15,9 +15,24 @@
                     <view key="view" contentMode="scaleToFill" id="KCc-rf-FJY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CrP-CX-8aC">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="8b4-VD-RVK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8b4-VD-RVK" firstAttribute="trailing" secondItem="CrP-CX-8aC" secondAttribute="trailing" id="9Wo-Pk-30R"/>
+                            <constraint firstItem="CrP-CX-8aC" firstAttribute="top" secondItem="8b4-VD-RVK" secondAttribute="top" id="HJI-qO-Ncm"/>
+                            <constraint firstItem="8b4-VD-RVK" firstAttribute="bottom" secondItem="CrP-CX-8aC" secondAttribute="bottom" id="Rmf-dc-KZj"/>
+                            <constraint firstItem="CrP-CX-8aC" firstAttribute="leading" secondItem="8b4-VD-RVK" secondAttribute="leading" id="uqz-Ac-iFO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieDetailsTableView" destination="CrP-CX-8aC" id="xQV-7S-C2q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWy-7L-U1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,8 +59,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-Qg-HPJ">
-                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-Qg-HPJ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="jV3-qI-5vs">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
@@ -88,10 +103,10 @@
                         <viewLayoutGuide key="safeArea" id="bzB-V7-wiU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="leading" secondItem="bzB-V7-wiU" secondAttribute="leading" id="8ga-kj-y1n"/>
-                            <constraint firstAttribute="bottom" secondItem="SMo-Qg-HPJ" secondAttribute="bottom" id="B6f-Cq-hej"/>
-                            <constraint firstItem="bzB-V7-wiU" firstAttribute="trailing" secondItem="SMo-Qg-HPJ" secondAttribute="trailing" id="Yq1-XT-CTH"/>
-                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="top" secondItem="bzB-V7-wiU" secondAttribute="top" id="hDn-NR-D4U"/>
+                            <constraint firstAttribute="bottom" secondItem="SMo-Qg-HPJ" secondAttribute="bottom" id="LS7-Ka-6p4"/>
+                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="leading" secondItem="1Xu-5u-6i5" secondAttribute="leading" id="UJE-yF-OiV"/>
+                            <constraint firstItem="SMo-Qg-HPJ" firstAttribute="top" secondItem="1Xu-5u-6i5" secondAttribute="top" id="k4D-x1-bJz"/>
+                            <constraint firstAttribute="trailing" secondItem="SMo-Qg-HPJ" secondAttribute="trailing" id="ql3-IX-Px2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MR Movie" id="gR6-W1-w36"/>
@@ -103,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3O-ym-epw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693.8931297709923" y="-475.35211267605638"/>
+            <point key="canvasLocation" x="1693.661971830986" y="-475.57251908396944"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MIN-YJ-0XC">

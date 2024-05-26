@@ -8,12 +8,18 @@
 import UIKit
 import Toast
 
+protocol MovieSelectionDelegate: AnyObject {
+    func movieSelected(_ movie: Movie)
+}
+
 class MoviesVC: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var searchMovieBar: UISearchBar!
     @IBOutlet weak var loadingMoviesIndicator: UIActivityIndicatorView!
     
     let viewModel = MoviesViewModel()
+    
+    static var delegate: MovieSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +60,16 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         let count = viewModel.getMoviesCount()
         if indexPath.item == count-1 {
             viewModel.fetchMoviesIfNeeded()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        DispatchQueue.main.async {
+            if let destinationVC = MoviesVC.delegate as? MovieDetailesViewController{
+                self.splitViewController?.showDetailViewController(destinationVC, sender: self)
+                MoviesVC.delegate?.movieSelected(self.viewModel.filteredMovies[indexPath.row])
+            }
         }
     }
 }
