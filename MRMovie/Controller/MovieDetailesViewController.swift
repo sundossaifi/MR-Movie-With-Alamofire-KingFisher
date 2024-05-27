@@ -40,7 +40,7 @@ extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.sectionTitles[section] == "Schedule" ? 2 : 1
+        return viewModel.numberOfRows(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,14 +54,16 @@ extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSourc
             guard let cell = movieDetailsTableView.dequeueReusableCell(withIdentifier: MovieInformationTableViewCell.identifier, for: indexPath) as? MovieInformationTableViewCell else {
                 return UITableViewCell()
             }
-            let imageIndex = indexPath.section - 1
-            cell.configureMovieInformationTableViewCell(with: viewModel.imageNames[imageIndex % viewModel.imageNames.count], sectionInfo: viewModel.movie?.name)
+            let detail = viewModel.detailForIndexPath(indexPath: indexPath)
+            if let imageName = detail.imageName, let sectionInfo = detail.sectionInfo {
+                cell.configureMovieInformationTableViewCell(with: imageName, sectionInfo: sectionInfo)
+            }
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 200 : 50
+        return indexPath.section == 0 ? 300 : 50
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -74,7 +76,7 @@ extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        30
+        25
     }
 }
 
