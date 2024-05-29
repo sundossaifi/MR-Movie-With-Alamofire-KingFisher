@@ -1,25 +1,18 @@
 //
-//  MoviesVC.swift
+//  MoviesViewController.swift
 //  MRMovie
 //
 //  Created by User on 5/24/24.
 //
 
 import UIKit
-import Toast
 
-protocol MovieSelectionDelegate: AnyObject {
-    func movieSelected(_ movie: Movie)
-}
-
-class MoviesVC: UIViewController {
+class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var searchMovieBar: UISearchBar!
     @IBOutlet weak var loadingMoviesIndicator: UIActivityIndicatorView!
     
     let viewModel = MoviesViewModel()
-    
-    static var delegate: MovieSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +25,11 @@ class MoviesVC: UIViewController {
         self.moviesTableView.delegate = self
         self.moviesTableView.register(MoviesTableViewCell.nib(), forCellReuseIdentifier: MoviesTableViewCell.identifier)
         self.searchMovieBar.delegate = self
+        navigationController?.navigationBar.tintColor = .label
     }
 }
 
-extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
+extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -52,10 +46,6 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let count = viewModel.getMoviesCount()
         if indexPath.item == count-1 {
@@ -64,17 +54,17 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        DispatchQueue.main.async {
-            if let destinationVC = MoviesVC.delegate as? MovieDetailesViewController{
-                self.splitViewController?.showDetailViewController(destinationVC, sender: self)
-                MoviesVC.delegate?.movieSelected(self.viewModel.filteredMovies[indexPath.row])
-            }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let movieDetailsVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailesViewController") as? MovieDetailesViewController {
+            let viewModel = MovieDetailsViewModel(movie: viewModel.filteredMovies[indexPath.row])
+            movieDetailsVC.viewModel = viewModel
+            let detailNavigationController = UINavigationController(rootViewController: movieDetailsVC)
+            self.splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
     }
 }
 
-extension MoviesVC: MoviesViewModelDelegate {
+extension MoviesViewController: MoviesViewModelDelegate {
     func onFetchCompleted() {
         DispatchQueue.main.async {
             self.loadingMoviesIndicator.isHidden = false
@@ -95,11 +85,11 @@ extension MoviesVC: MoviesViewModelDelegate {
     }
 }
 
-extension MoviesVC: UISearchBarDelegate {
+extension MoviesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.filterMovies(for: searchText)
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()

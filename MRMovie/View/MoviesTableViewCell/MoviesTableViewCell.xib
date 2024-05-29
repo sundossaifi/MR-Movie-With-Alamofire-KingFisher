@@ -10,53 +10,48 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="KGk-i7-Jjw" customClass="MoviesTableViewCell" customModule="MRMovie" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="108" id="KGk-i7-Jjw" customClass="MoviesTableViewCell" customModule="MRMovie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="352" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="352" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntC-Tq-jOD">
-                        <rect key="frame" x="10" y="5" width="90" height="100"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="90" id="nAX-GF-b7j"/>
-                        </constraints>
-                    </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-aI-Ldy">
-                        <rect key="frame" x="120" y="7" width="227" height="96"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zru-QR-ndn">
+                        <rect key="frame" x="5" y="5" width="342" height="100"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uqR-f8-gMU">
-                                <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="54.666666666666664"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntC-Tq-jOD">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="105" id="DTI-cB-fNt"/>
+                                    <constraint firstAttribute="width" constant="100" id="nAX-GF-b7j"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-aI-Ldy">
+                                <rect key="frame" x="110" y="0.0" width="232" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnI-4z-4fJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="26.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Movies" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnI-4z-4fJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="122.66666666666667" height="30.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzi-Cm-VzP">
-                                        <rect key="frame" x="0.0" y="28.333333333333336" width="133.66666666666666" height="26.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                        <rect key="frame" x="0.0" y="30.666666666666661" width="86.666666666666671" height="39.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                </subviews>
-                                <color key="tintColor" systemColor="systemYellowColor"/>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7AX-mj-brz">
-                                <rect key="frame" x="0.0" y="66" width="170" height="30"/>
-                                <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-Xw-56L">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="30"/>
+                                        <rect key="frame" x="0.0" y="70" width="170" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SNm-xb-aa6">
                                                 <rect key="frame" x="0.0" y="-0.33333333333333215" width="30" height="29.666666666666664"/>
                                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="SPr-nc-N3X"/>
-                                                    <constraint firstAttribute="height" constant="30" id="n55-Qx-ePh"/>
+                                                    <constraint firstAttribute="height" priority="90" constant="30" id="n55-Qx-ePh"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="crV-Me-cQG">
@@ -64,7 +59,7 @@
                                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="O04-y0-Zeu"/>
-                                                    <constraint firstAttribute="height" constant="30" id="xqw-sn-QOg"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="30" id="xqw-sn-QOg"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sNL-Yq-gXb">
@@ -72,7 +67,7 @@
                                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Id2-DG-4TC"/>
-                                                    <constraint firstAttribute="height" constant="30" id="SWk-M2-Cnm"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="30" id="SWk-M2-Cnm"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vUf-YE-Fhz">
@@ -80,14 +75,14 @@
                                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Wjp-Ch-nYw"/>
-                                                    <constraint firstAttribute="height" constant="30" id="fPI-2u-cwo"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="30" id="fPI-2u-cwo"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JfG-By-fYt">
                                                 <rect key="frame" x="140" y="-0.33333333333333215" width="30" height="29.666666666666664"/>
                                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="7d1-tQ-1ne"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="30" id="7d1-tQ-1ne"/>
                                                     <constraint firstAttribute="width" constant="30" id="KKk-iW-j9C"/>
                                                 </constraints>
                                             </imageView>
@@ -105,15 +100,12 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="ntC-Tq-jOD" secondAttribute="bottom" constant="5" id="Gom-fe-3l1"/>
-                    <constraint firstAttribute="trailing" secondItem="8FU-aI-Ldy" secondAttribute="trailing" constant="5" id="HKV-Rd-UD0"/>
-                    <constraint firstItem="ntC-Tq-jOD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="IXR-j9-iB3"/>
-                    <constraint firstItem="uSo-9E-2wY" firstAttribute="centerX" secondItem="ntC-Tq-jOD" secondAttribute="centerX" id="ZBB-AG-yw6"/>
-                    <constraint firstItem="8FU-aI-Ldy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Zza-Hf-p41"/>
-                    <constraint firstItem="uSo-9E-2wY" firstAttribute="centerY" secondItem="ntC-Tq-jOD" secondAttribute="centerY" id="dfT-sP-Bv0"/>
-                    <constraint firstAttribute="bottom" secondItem="8FU-aI-Ldy" secondAttribute="bottom" constant="7" id="fJM-Jw-MRx"/>
-                    <constraint firstItem="ntC-Tq-jOD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="g8e-x9-rcP"/>
-                    <constraint firstItem="8FU-aI-Ldy" firstAttribute="leading" secondItem="ntC-Tq-jOD" secondAttribute="trailing" constant="20" id="iaX-Xz-BFH"/>
+                    <constraint firstItem="uSo-9E-2wY" firstAttribute="centerY" secondItem="ntC-Tq-jOD" secondAttribute="centerY" id="4Vb-eD-79r"/>
+                    <constraint firstAttribute="trailing" secondItem="zru-QR-ndn" secondAttribute="trailing" constant="5" id="5zv-IJ-deG"/>
+                    <constraint firstItem="zru-QR-ndn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="HU7-fd-AdG"/>
+                    <constraint firstItem="zru-QR-ndn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="aze-A9-wpb"/>
+                    <constraint firstAttribute="bottom" secondItem="zru-QR-ndn" secondAttribute="bottom" constant="5" id="kW0-nY-kK7"/>
+                    <constraint firstItem="uSo-9E-2wY" firstAttribute="centerX" secondItem="ntC-Tq-jOD" secondAttribute="centerX" id="lCf-Ob-jtU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -123,11 +115,11 @@
                 <outlet property="moviePosterImageView" destination="ntC-Tq-jOD" id="ufV-mh-mff"/>
                 <outlet property="movieTypeLabel" destination="kzi-Cm-VzP" id="a6H-XW-w8d"/>
                 <outlet property="noPhotoLabel" destination="uSo-9E-2wY" id="3Xv-yo-PF4"/>
-                <outletCollection property="starsRatingImageViews" destination="SNm-xb-aa6" collectionClass="NSMutableArray" id="YUC-1L-LLZ"/>
-                <outletCollection property="starsRatingImageViews" destination="crV-Me-cQG" collectionClass="NSMutableArray" id="H1B-Q6-Nvf"/>
-                <outletCollection property="starsRatingImageViews" destination="sNL-Yq-gXb" collectionClass="NSMutableArray" id="RTg-ub-l03"/>
-                <outletCollection property="starsRatingImageViews" destination="vUf-YE-Fhz" collectionClass="NSMutableArray" id="tPG-fT-gmI"/>
-                <outletCollection property="starsRatingImageViews" destination="JfG-By-fYt" collectionClass="NSMutableArray" id="94z-K6-3sO"/>
+                <outletCollection property="starsRatingImageViews" destination="SNm-xb-aa6" collectionClass="NSMutableArray" id="Uva-Fn-EEL"/>
+                <outletCollection property="starsRatingImageViews" destination="crV-Me-cQG" collectionClass="NSMutableArray" id="2FW-a6-6YN"/>
+                <outletCollection property="starsRatingImageViews" destination="sNL-Yq-gXb" collectionClass="NSMutableArray" id="1hz-Ko-teq"/>
+                <outletCollection property="starsRatingImageViews" destination="vUf-YE-Fhz" collectionClass="NSMutableArray" id="Okh-k9-TKV"/>
+                <outletCollection property="starsRatingImageViews" destination="JfG-By-fYt" collectionClass="NSMutableArray" id="GxU-0C-rPa"/>
             </connections>
             <point key="canvasLocation" x="111.45038167938931" y="4.9295774647887329"/>
         </tableViewCell>

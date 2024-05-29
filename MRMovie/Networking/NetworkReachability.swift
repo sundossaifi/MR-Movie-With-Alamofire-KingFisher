@@ -16,7 +16,7 @@ class NetworkReachability {
     private lazy var offlineAlertController: UIAlertController = {
         let offlineAlertController = UIAlertController(title: "Notice", message: "The Internet Connection appears to be offline", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                }
+        }
         offlineAlertController.addAction(okAction)
         return offlineAlertController
     }()

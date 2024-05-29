@@ -11,7 +11,7 @@ class MovieDetailesViewController: UIViewController {
     
     @IBOutlet weak var movieDetailsTableView: UITableView!
     
-    let viewModel = MovieDetailViewModel()
+    var viewModel: MovieDetailsViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,43 +19,44 @@ class MovieDetailesViewController: UIViewController {
     }
     
     private func configureView() {
-        MoviesVC.delegate = self
-        
         movieDetailsTableView.dataSource = self
         movieDetailsTableView.delegate = self
-                
+        
         movieDetailsTableView.register(MoviePosterTableViewCell.nib(), forCellReuseIdentifier: MoviePosterTableViewCell.identifier)
         movieDetailsTableView.register(MovieInformationTableViewCell.nib(), forCellReuseIdentifier: MovieInformationTableViewCell.identifier)
-
+        
+        title = viewModel?.movie?.name
+        
+        navigationController?.navigationBar.tintColor = .label
+        
     }
 }
 
 extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.getSectionsCount()
+        return viewModel?.numberOfSections() ?? 0
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.sectionTitles[section]
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(in: section)
+        return viewModel?.numberOfRows(for: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        guard let section = viewModel?.sections[indexPath.section] else { return UITableViewCell() }
+        
+        switch section {
+        case .coverPhoto:
             guard let cell = movieDetailsTableView.dequeueReusableCell(withIdentifier: MoviePosterTableViewCell.identifier, for: indexPath) as? MoviePosterTableViewCell else {
                 return UITableViewCell()
             }
-            cell.configureMoviePosterTableViewCell(with: viewModel.movie?.image?.originalURL)
+            cell.configureMoviePosterTableViewCell(with: viewModel?.movie?.image?.originalURL)
             return cell
-        } else {
+        default:
             guard let cell = movieDetailsTableView.dequeueReusableCell(withIdentifier: MovieInformationTableViewCell.identifier, for: indexPath) as? MovieInformationTableViewCell else {
                 return UITableViewCell()
             }
-            let detail = viewModel.detailForIndexPath(indexPath: indexPath)
-            if let imageName = detail.imageName, let sectionInfo = detail.sectionInfo {
+            let detail = viewModel?.detailForIndexPath(indexPath: indexPath)
+            if let imageName = detail?.imageName, let sectionInfo = detail?.sectionInfo {
                 cell.configureMovieInformationTableViewCell(with: imageName, sectionInfo: sectionInfo)
             }
             return cell
@@ -63,28 +64,38 @@ extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 300 : 50
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else {
-            return
-        }
-        header.textLabel?.frame = CGRect(x: Int(header.bounds.origin.x), y: Int(header.bounds.origin.y), width: 100, height: Int(header.bounds.height))
-        header.textLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        header.textLabel?.text =  header.textLabel?.text?.uppercased()
+        return viewModel?.heightForRowAt(indexPath: indexPath) ?? UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        25
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return viewModel?.heightForFooterInSection(section: section) ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerTitle = viewModel?.sections[section].headerTitle.uppercased() else { return nil }
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
+        let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.width - 32, height: 60))
+        headerLabel.text = headerTitle
+        headerLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        headerLabel.textColor = .gray
+        headerView.addSubview(headerLabel)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let footerText = viewModel?.sections[section].footerText else { return nil }
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 30))
+        let footerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.width - 32, height: 30))
+        footerLabel.text = footerText
+        footerLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        footerLabel.textColor = .gray
+        footerView.addSubview(footerLabel)
+        return footerView
     }
 }
 
-extension MovieDetailesViewController: MovieSelectionDelegate {
-    func movieSelected(_ movie: Movie) {
-        self.title = movie.name
-        viewModel.movie = movie
-        self.movieDetailsTableView.reloadData()
-    }
-}
 

@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class MoviesTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieTypeLabel: UILabel!
@@ -20,7 +20,7 @@ class MoviesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         configureMoviePosterImageView()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         configureMoviePosterImageView()
@@ -59,7 +59,7 @@ class MoviesTableViewCell: UITableViewCell {
             moviePosterImageView.kf.setImage(with: originalURL)
             noPhotoLabel.isHidden = true
         } else {
-            moviePosterImageView.image = nil 
+            moviePosterImageView.image = nil
             noPhotoLabel.isHidden = false
         }
         guard let average = movie.rating?.average else {
