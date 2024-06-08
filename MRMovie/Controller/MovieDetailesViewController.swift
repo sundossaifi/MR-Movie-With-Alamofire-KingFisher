@@ -38,33 +38,30 @@ extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfRows(for: section) ?? 0
+        return viewModel?.numberOfRows(in: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = viewModel?.sections[indexPath.section] else { return UITableViewCell() }
+        let model = viewModel?.sections[indexPath.section].rows[indexPath.row]
         
-        switch section {
-        case .coverPhoto:
-            guard let cell = movieDetailsTableView.dequeueReusableCell(withIdentifier: MoviePosterTableViewCell.identifier, for: indexPath) as? MoviePosterTableViewCell else {
+        if let posterModel = model as? MoviePosterCellModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviePosterTableViewCell.identifier, for: indexPath) as? MoviePosterTableViewCell else {
                 return UITableViewCell()
             }
-            cell.configureMoviePosterTableViewCell(with: viewModel?.movie?.image?.originalURL)
+            cell.configure(with: posterModel)
             return cell
-        default:
-            guard let cell = movieDetailsTableView.dequeueReusableCell(withIdentifier: MovieInformationTableViewCell.identifier, for: indexPath) as? MovieInformationTableViewCell else {
+        } else if let infoModel = model as? MovieInformationCellModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieInformationTableViewCell.identifier, for: indexPath) as? MovieInformationTableViewCell else {
                 return UITableViewCell()
             }
-            let detail = viewModel?.detailForIndexPath(indexPath: indexPath)
-            if let imageName = detail?.imageName, let sectionInfo = detail?.sectionInfo {
-                cell.configureMovieInformationTableViewCell(with: imageName, sectionInfo: sectionInfo)
-            }
+            cell.configure(with: infoModel)
             return cell
         }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel?.heightForRowAt(indexPath: indexPath) ?? UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -72,7 +69,7 @@ extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return viewModel?.heightForFooterInSection(section: section) ?? 0
+        return viewModel?.footerHeight(for: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -80,7 +77,7 @@ extension MovieDetailesViewController: UITableViewDelegate, UITableViewDataSourc
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
         let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.width - 32, height: 60))
         headerLabel.text = headerTitle
-        headerLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        headerLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         headerLabel.textColor = .gray
         headerView.addSubview(headerLabel)
         return headerView

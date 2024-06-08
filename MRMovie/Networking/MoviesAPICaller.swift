@@ -26,6 +26,7 @@ enum API {
         return URL(string: urlString)
     }
 }
+
 class MoviesAPICaller {
     static let shared = MoviesAPICaller()
     
@@ -40,31 +41,32 @@ class MoviesAPICaller {
                 userInfo: userInfo,
                 storagePolicy: .allowed)
         })
-        return Session(configuration: configuration,cachedResponseHandler: responseCacher)
+        return Session(configuration: configuration, cachedResponseHandler: responseCacher)
     }()
     
-    public func fetchMovies(_ page: Int, onSuccess: @escaping ([Movie]) -> Void, onFailure: @escaping (Error) -> Void) {
+    public func fetchMovies(_ page: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
         guard let url = API.fetchMovies(page: page).url else {
-            onFailure(NSError(domain: "APICaller", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
+            completion(.failure(NSError(domain: "APICaller", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
+        
         sessionManager.request(url).response { response in
             switch response.result {
             case .success(let data):
                 guard let data = data else {
-                    onFailure(NSError(domain: "APICaller", code: -2, userInfo: [NSLocalizedDescriptionKey: "No data returned from API"]))
+                    completion(.failure(NSError(domain: "APICaller", code: -2, userInfo: [NSLocalizedDescriptionKey: "No data returned from API"])))
                     return
                 }
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let results = try decoder.decode([Movie].self, from: data)
-                    onSuccess(results)
+                    completion(.success(results))
                 } catch {
-                    onFailure(error)
+                    completion(.failure(error))
                 }
             case .failure(let error):
-                onFailure(error)
+                completion(.failure(error))
             }
         }
     }

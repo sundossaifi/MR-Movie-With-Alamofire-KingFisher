@@ -62,7 +62,6 @@ struct Movie: Codable {
     }
     
     struct DVD: Codable {
-        // Define properties if necessary
     }
     
     struct Externals: Codable {

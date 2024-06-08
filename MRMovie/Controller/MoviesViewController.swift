@@ -11,20 +11,25 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var searchMovieBar: UISearchBar!
     @IBOutlet weak var loadingMoviesIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noDataLabel: UILabel!
     
     let viewModel = MoviesViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        viewModel.fetchMoviesIfNeeded()
     }
     
     private func configureView() {
         self.viewModel.delegate = self
+        
         self.moviesTableView.dataSource = self
         self.moviesTableView.delegate = self
         self.moviesTableView.register(MoviesTableViewCell.nib(), forCellReuseIdentifier: MoviesTableViewCell.identifier)
+        
         self.searchMovieBar.delegate = self
+        
         navigationController?.navigationBar.tintColor = .label
     }
 }
@@ -65,22 +70,36 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MoviesViewController: MoviesViewModelDelegate {
-    func onFetchCompleted() {
+    func onFetchStarted() {
         DispatchQueue.main.async {
             self.loadingMoviesIndicator.isHidden = false
             self.loadingMoviesIndicator.startAnimating()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.loadingMoviesIndicator.isHidden = true
-                self.moviesTableView.reloadData()
-            }
+        }
+    }
+    
+    func onFetchCompleted() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.loadingMoviesIndicator.isHidden = true
+            self.loadingMoviesIndicator.stopAnimating()
+            self.noDataLabel.isHidden = true
+            self.moviesTableView.reloadData()
         }
     }
     
     func onFetchFailed(with reason: String) {
-        print(reason)
         DispatchQueue.main.async {
             self.loadingMoviesIndicator.stopAnimating()
-            self.loadingMoviesIndicator.isHidden = true
+            self.noDataLabel.isHidden = false
+            self.noDataLabel.text = "Failed to fetch data: \(reason)"
+        }
+    }
+    
+    func onNoData() {
+        DispatchQueue.main.async {
+            self.loadingMoviesIndicator.stopAnimating()
+            self.noDataLabel.isHidden = false
+            self.noDataLabel.text = "No results found."
+            self.moviesTableView.reloadData()
         }
     }
 }

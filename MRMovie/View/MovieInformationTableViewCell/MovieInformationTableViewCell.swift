@@ -26,8 +26,10 @@ class MovieInformationTableViewCell: UITableViewCell {
         sectionInfoLabel.text = nil
     }
     
-    func configureMovieInformationTableViewCell(with imageName: String, sectionInfo: String?) {
-        sectionInfoLabel.text = sectionInfo
-        sectionIconImageView.image = UIImage(named: imageName)
+    func configure(with model: MovieInformationCellModel) {
+        sectionInfoLabel.text = model.detail
+        if let imageName = model.imageName {
+            sectionIconImageView.image = UIImage(named: imageName)
+        }
     }
 }

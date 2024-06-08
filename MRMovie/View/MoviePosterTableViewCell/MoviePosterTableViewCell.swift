@@ -20,7 +20,7 @@ class MoviePosterTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureMoviePosterTableViewCell(with imageURL: URL?) {
-        moviePosterImageView.kf.setImage(with: imageURL)
+    func configure(with model: MoviePosterCellModel) {
+        moviePosterImageView.kf.setImage(with: model.imageURL)
     }
 }

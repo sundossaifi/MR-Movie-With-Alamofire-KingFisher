@@ -9,34 +9,37 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="48" id="KGk-i7-Jjw" customClass="MovieInformationTableViewCell" customModule="MRMovie" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="MovieInformationTableViewCell" customModule="MRMovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="62"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="325" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Afp-ZT-X99">
-                        <rect key="frame" x="20" y="5" width="50" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="oUq-JB-DKV"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxg-Zz-NW6">
-                        <rect key="frame" x="75" y="5" width="240" height="40"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jy9-sU-0pg">
+                        <rect key="frame" x="20" y="5" width="300" height="52"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Afp-ZT-X99">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="50" id="2A3-jc-L1m"/>
+                                    <constraint firstAttribute="width" constant="50" id="oUq-JB-DKV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No available data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxg-Zz-NW6">
+                                <rect key="frame" x="55" y="0.0" width="245" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Mxg-Zz-NW6" firstAttribute="leading" secondItem="Afp-ZT-X99" secondAttribute="trailing" constant="5" id="Kvm-oh-2CZ"/>
-                    <constraint firstItem="Afp-ZT-X99" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Pei-7f-dmD"/>
-                    <constraint firstAttribute="trailing" secondItem="Mxg-Zz-NW6" secondAttribute="trailing" constant="5" id="ZUa-yK-CQb"/>
-                    <constraint firstItem="Afp-ZT-X99" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nbQ-KZ-Msf"/>
-                    <constraint firstAttribute="bottom" secondItem="Afp-ZT-X99" secondAttribute="bottom" constant="5" id="nhj-XB-EsH"/>
-                    <constraint firstItem="Mxg-Zz-NW6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="r3C-4p-fe1"/>
-                    <constraint firstAttribute="bottom" secondItem="Mxg-Zz-NW6" secondAttribute="bottom" constant="5" id="rdy-TZ-y99"/>
+                    <constraint firstAttribute="trailing" secondItem="Jy9-sU-0pg" secondAttribute="trailing" constant="5" id="CzX-XB-r70"/>
+                    <constraint firstAttribute="bottom" secondItem="Jy9-sU-0pg" secondAttribute="bottom" constant="5" id="Pfp-sP-Dxd"/>
+                    <constraint firstItem="Jy9-sU-0pg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="mzl-VC-IrW"/>
+                    <constraint firstItem="Jy9-sU-0pg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="xsh-xf-36E"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -44,7 +47,7 @@
                 <outlet property="sectionIconImageView" destination="Afp-ZT-X99" id="MUs-iz-DhY"/>
                 <outlet property="sectionInfoLabel" destination="Mxg-Zz-NW6" id="rWd-s2-aBV"/>
             </connections>
-            <point key="canvasLocation" x="138.93129770992365" y="21.83098591549296"/>
+            <point key="canvasLocation" x="142.74809160305344" y="26.056338028169016"/>
         </tableViewCell>
     </objects>
 </document>

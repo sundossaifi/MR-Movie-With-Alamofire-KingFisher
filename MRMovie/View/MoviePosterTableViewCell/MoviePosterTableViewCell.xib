@@ -16,23 +16,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="314" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tGo-BP-8DF">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attack-on-titan-shingeki-no-kyojin-attack-i22797" translatesAutoresizingMaskIntoConstraints="NO" id="hDa-TJ-vnv">
                         <rect key="frame" x="0.0" y="0.0" width="314" height="300"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attack-on-titan-shingeki-no-kyojin-attack-i22797" translatesAutoresizingMaskIntoConstraints="NO" id="hDa-TJ-vnv">
-                                <rect key="frame" x="0.0" y="0.0" width="314" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="dDy-3V-mAZ"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                    </stackView>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="999" constant="300" id="dDy-3V-mAZ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="tGo-BP-8DF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bjA-7y-m1T"/>
-                    <constraint firstAttribute="trailing" secondItem="tGo-BP-8DF" secondAttribute="trailing" id="ke5-mj-evT"/>
-                    <constraint firstItem="tGo-BP-8DF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xOg-jU-47J"/>
-                    <constraint firstAttribute="bottom" secondItem="tGo-BP-8DF" secondAttribute="bottom" id="z1d-AX-Adh"/>
+                    <constraint firstItem="hDa-TJ-vnv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0ch-1W-cCk"/>
+                    <constraint firstAttribute="bottom" secondItem="hDa-TJ-vnv" secondAttribute="bottom" id="9Hc-sL-yYB"/>
+                    <constraint firstAttribute="trailing" secondItem="hDa-TJ-vnv" secondAttribute="trailing" id="QmB-KC-YjY"/>
+                    <constraint firstItem="hDa-TJ-vnv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="f56-dP-CcX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
