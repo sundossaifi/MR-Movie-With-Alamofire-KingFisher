@@ -107,6 +107,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="p2L-WU-Tr1">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0Z-gr-Udl">
                                 <rect key="frame" x="20" y="426" width="353" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
@@ -117,6 +120,8 @@
                         <viewLayoutGuide key="safeArea" id="bzB-V7-wiU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="p2L-WU-Tr1" firstAttribute="centerX" secondItem="1Xu-5u-6i5" secondAttribute="centerX" id="EWh-JA-OhF"/>
+                            <constraint firstItem="p2L-WU-Tr1" firstAttribute="centerY" secondItem="1Xu-5u-6i5" secondAttribute="centerY" id="Jh9-Mw-tV0"/>
                             <constraint firstAttribute="bottom" secondItem="SMo-Qg-HPJ" secondAttribute="bottom" id="LS7-Ka-6p4"/>
                             <constraint firstItem="T0Z-gr-Udl" firstAttribute="leading" secondItem="bzB-V7-wiU" secondAttribute="leading" constant="20" id="Lws-DD-TKS"/>
                             <constraint firstItem="SMo-Qg-HPJ" firstAttribute="leading" secondItem="1Xu-5u-6i5" secondAttribute="leading" id="UJE-yF-OiV"/>
@@ -128,6 +133,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MR Movie" id="gR6-W1-w36"/>
                     <connections>
+                        <outlet property="centralLoadingIndicator" destination="p2L-WU-Tr1" id="ARi-FQ-x4Z"/>
                         <outlet property="loadingMoviesIndicator" destination="Iwb-Dh-a1E" id="czV-6u-Xgg"/>
                         <outlet property="moviesTableView" destination="SMo-Qg-HPJ" id="i6K-23-Z8H"/>
                         <outlet property="noDataLabel" destination="T0Z-gr-Udl" id="z1O-sU-imp"/>

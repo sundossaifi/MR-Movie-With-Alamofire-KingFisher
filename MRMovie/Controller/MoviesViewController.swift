@@ -11,6 +11,7 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var searchMovieBar: UISearchBar!
     @IBOutlet weak var loadingMoviesIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var centralLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var noDataLabel: UILabel!
     
     let viewModel = MoviesViewModel()
@@ -71,9 +72,18 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MoviesViewController: MoviesViewModelDelegate {
     func onFetchStarted() {
-        DispatchQueue.main.async {
-            self.loadingMoviesIndicator.isHidden = false
-            self.loadingMoviesIndicator.startAnimating()
+        if viewModel.currentPage == 0 {
+            DispatchQueue.main.async {
+                self.centralLoadingIndicator.isHidden = false
+                self.loadingMoviesIndicator.isHidden = true
+                self.centralLoadingIndicator.startAnimating()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.centralLoadingIndicator.isHidden = true
+                self.loadingMoviesIndicator.isHidden = false
+                self.loadingMoviesIndicator.startAnimating()
+            }
         }
     }
     
@@ -81,6 +91,8 @@ extension MoviesViewController: MoviesViewModelDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.loadingMoviesIndicator.isHidden = true
             self.loadingMoviesIndicator.stopAnimating()
+            self.centralLoadingIndicator.stopAnimating()
+            self.centralLoadingIndicator.isHidden = true
             self.noDataLabel.isHidden = true
             self.moviesTableView.reloadData()
         }
@@ -89,6 +101,8 @@ extension MoviesViewController: MoviesViewModelDelegate {
     func onFetchFailed(with reason: String) {
         DispatchQueue.main.async {
             self.loadingMoviesIndicator.stopAnimating()
+            self.centralLoadingIndicator.stopAnimating()
+            self.centralLoadingIndicator.isHidden = true
             self.noDataLabel.isHidden = false
             self.noDataLabel.text = "Failed to fetch data: \(reason)"
         }
@@ -97,6 +111,7 @@ extension MoviesViewController: MoviesViewModelDelegate {
     func onNoData() {
         DispatchQueue.main.async {
             self.loadingMoviesIndicator.stopAnimating()
+            self.centralLoadingIndicator.stopAnimating()
             self.noDataLabel.isHidden = false
             self.noDataLabel.text = "No results found."
             self.moviesTableView.reloadData()
